@@ -88,6 +88,7 @@ namespace SkalProj_Datastrukturer_Minne
                 //char nav = input[0];
                 //string value = input.substring(1);
 
+
                 //switch (nav)
                 //{
 
