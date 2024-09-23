@@ -70,15 +70,33 @@ namespace SkalProj_Datastrukturer_Minne
              * In both cases, look at the count and capacity of the list
              * As a default case, tell them to use only + or -
              * Below you can see some inspirational code to begin working.
+             * 
             */
 
-            //List<string> theList = new List<string>();
-            //string input = Console.ReadLine();
-            //char nav = input[0];
-            //string value = input.substring(1);
+            List<string> theList = new List<string>();
 
-            //switch(nav){...}
-        }
+            while (true) 
+            {
+                Console.WriteLine("Enter '+' or '-' to add and remove names from the list. Write 'exit' to go back to main menu.");
+                string input = Console.ReadLine();
+
+                if(input.ToUpper() == "exit") 
+                {
+                    break;// the user will exit the loop if types "exit"
+                }
+
+                //char nav = input[0];
+                //string value = input.substring(1);
+
+                //switch (nav)
+                //{
+
+                //}
+
+            }
+
+           
+    }
 
         /// <summary>
         /// Examines the datastructure Queue
