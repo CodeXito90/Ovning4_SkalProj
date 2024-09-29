@@ -20,6 +20,7 @@ namespace SkalProj_Datastrukturer_Minne
                     + "\n3. Examine a Stack"
                     + "\n4. CheckParenthesis"
                     + "\n5. Rekursion"
+                    + "\n6. Iteration"
                     + "\n0. Exit the application");
                 char input = ' '; //Creates the character input to be used with the switch-case below.
                 try
@@ -51,6 +52,9 @@ namespace SkalProj_Datastrukturer_Minne
                      */
                     case '5':
                         Rekursion();
+                        break;
+                    case '6':
+                        Iteration();                        
                         break;
                     case '0':
                         Environment.Exit(0);
@@ -202,6 +206,7 @@ namespace SkalProj_Datastrukturer_Minne
         /// </summary>
         static void ExamineStack()
             {
+
             //Reverse string operations assignment
             Console.WriteLine("Enter string to reverse");
 
@@ -392,57 +397,33 @@ namespace SkalProj_Datastrukturer_Minne
 
             //}
             
-        //Vi ska skapa methods som visar hur rekursion fungerar med udda och jämna tal
+        //Vi ska skapa methoder som visar hur rekursion fungerar med jämna tal
         static void Rekursion() 
         {
-            // först anropar vi recursiveodd 1 som beräknar första udda talet = 1
-            Console.WriteLine("RecursiveOdd(1) = " + RecursiveOdd(1));           
-            Console.WriteLine("RecursiveOdd(3) = " + RecursiveOdd(3));
-            Console.WriteLine("RecursiveOdd(5) = " + RecursiveOdd(5));
+            Console.WriteLine("RecursiveEven(1) = " + RecursiveEven(1));
+            Console.WriteLine("RecursiveEven(3) = " + RecursiveEven(3));
+            Console.WriteLine("RecursiveEven(5) = " + RecursiveEven(5));
 
-            //här ska vi beräkna det n;te udda talet
-            static int RecursiveOdd(int n)
-            {
-                Console.WriteLine(new String('-', 20));// separator så det ser finare och mer läsbart 
+            Console.WriteLine(new String('-', 20));
 
-                // Visar vilket värde n har och att metoden anropar sig själv med n-1
-                Console.WriteLine($"n = {n}, calling RecursiveOdd({n - 1})\n");
-
-                if (n == 1)// Vår basecase: om n är 1, returneras det första udda talet, som är 1
-                {
-                    Console.WriteLine("The base case has been reached (n = 1), returning 1\n");
-                    return 1;
-                }
-
-                int result = RecursiveOdd(n - 1) + 2;
-                // Vi anropar RecursiveOdd igen med n-1 och lägger till 2 för att få nästa udda tal osv
-                // tills vi når RecursiveOdd(5)
-
-                Console.WriteLine($"Returns: {result} for n = {n}");
-                return result;
-
-            }
+            Console.WriteLine("FibonaciRekursive(1) = " + FibonaciRekursive(1));
+            Console.WriteLine("FibonaciRekursive(2) = " + FibonaciRekursive(2));
+            Console.WriteLine("FibonaciRekursive(3) = " + FibonaciRekursive(3));
 
             static int RecursiveEven(int n)
             {
-                Console.WriteLine(new String('-', 20));
-                Console.WriteLine($"n = {n}, calling RecursiveEven({n - 1})\n");
 
                 if (n == 1)
                 {
-                    Console.WriteLine("The base case has been reached (n = 1), returning 2\n");
+                    Console.WriteLine("The base case has been reached (n = 1), returning 2\n");                   
                     return 2;
                 }
 
                 int result = RecursiveEven(n - 1) + 2;
 
-                Console.WriteLine($"Returns: {result} for n = {n}");
+               // Console.WriteLine($"Returns: {result} for n = {n}");
                 return result;
-            }
-
-            Console.WriteLine("RecursiveEven(1) = " + RecursiveEven(1));
-            Console.WriteLine("RecursiveEven(3) = " + RecursiveEven(3));
-            Console.WriteLine("RecursiveEven(5) = " + RecursiveEven(5));
+            }           
 
             // Keynote: I Fibonacci-sekvensen är de första två talen alltid definierade som:
             // f(0) = 0
@@ -452,7 +433,7 @@ namespace SkalProj_Datastrukturer_Minne
             // vår sekvens defineras som : f(0) = 0 ----> f(1) = 1 ----> f(n) = f(n-1) + f(n-2) för n > 1
 
             // Recursive metod
-            static int Fibonaci(int n) 
+            static int FibonaciRekursive(int n) 
             {
                 // CRASH ALERT! OM VI KÖR KODEN UTAN IF-SATSEN SÅ KOMMER DET KRASCHA
                 if (n == 0)
@@ -465,34 +446,8 @@ namespace SkalProj_Datastrukturer_Minne
                 }
                 else
                 { 
-                    return Fibonaci(n - 1) + Fibonaci(n - 2);
+                    return FibonaciRekursive(n - 1) + FibonaciRekursive(n - 2);
                 }
-            }
-
-            static int FibonaciIteration(int n) 
-            {
-                if(n == 0)//om n är 0, så får vi tilbaka 0 direkt
-                    return 0;
-
-                if(n == 1)// samma här
-                    return 1;
-
-                // firstNr och secondNr används för att hålla de två senaste talen i sekvensen, medan currentNr lagrar det aktuella talet
-                int firstNr = 0;
-                int secondNr = 1;        
-                
-                int currentNr = 0;
-
-                //Här kör vi en loop för att få fram the n:te fibonacci talet
-                for (int i = 2; i < n; i++) 
-                {
-                    // Det aktuella Fibonacci-talet är summan av de två föregående
-                    currentNr = firstNr + secondNr;
-
-                    firstNr = secondNr;
-                    secondNr = currentNr;
-                }
-                return currentNr;
             }
 
             // Keynote1:
@@ -505,5 +460,63 @@ namespace SkalProj_Datastrukturer_Minne
 
         }
 
+        static void Iteration() 
+        {
+            Console.WriteLine("IterativeEven(1) = " + IterativeEven(1));
+            Console.WriteLine("IterativeEven(3) = " + IterativeEven(3));
+            Console.WriteLine("IterativeEven(5) = " + IterativeEven(5));
+
+            Console.WriteLine(new string('-', 25));
+
+            Console.WriteLine("FibonaciIteration(1) = " + FibonaciIteration(1));
+            Console.WriteLine("FibonaciIteration(2) = " + FibonaciIteration(2));
+            Console.WriteLine("FibonaciIteration(3) = " + FibonaciIteration(3));
+
+            static int IterativeEven(int n) 
+            {
+                int result = 0;
+
+                for (int i = 0; i < n; i++) 
+                {
+                    result += 2;
+                }
+
+                return result;
+            }
+
+            static int FibonaciIteration(int n)
+            {
+                if (n == 0)//om n är 0, så får vi tilbaka 0 direkt
+                    return 0;
+
+                if (n == 1)// samma här
+                    return 1;
+
+                // firstNr och secondNr används för att hålla de två senaste talen i sekvensen, medan currentNr lagrar det aktuella talet
+                int firstNr = 0;
+                int secondNr = 1;
+
+                int currentNr = 0;
+
+                //Här kör vi en loop för att få fram the n:te fibonacci talet
+                for (int i = 2; i <= n; i++)
+                {
+                    // Det aktuella Fibonacci-talet är summan av de två föregående
+                    currentNr = firstNr + secondNr;
+
+                    firstNr = secondNr;
+                    secondNr = currentNr;
+                }
+                return currentNr;
+            }
+
+            //F... Vilken av ovanstående funktioner (iteration & rekursion) är mest minnesvänlig och varför ?
+
+            //S... Iteration är den mest minnesvänliga funktionen, för att den använder en fast mängd minne genom en loop, jämfört med
+            //     rekursion som kan leda till höga minneskostnader på grund av det många stackframes som skapas för varje anrop.
+            //     Detta riskerar för stack overflow vid för djupa rekursioner. Iteration undviker detta problem och därför bättre i minnesperspektiv.
+
+
+        }
     }
     }
